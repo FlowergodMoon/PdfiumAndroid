@@ -64,6 +64,7 @@ target_link_libraries( # Specifies the target library.
         ${log-lib}
         ${android-lib}
         ${jnigraphics-lib}
+        "-Wl,-z,max-page-size=16384"
         )
 
 

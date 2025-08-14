@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.RectF;
+import android.os.Build;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
 import android.view.Surface;
@@ -114,7 +115,9 @@ public class PdfiumCore {
 
     /** Context needed to get screen density */
     public PdfiumCore(Context ctx) {
-        mCurrentDpi = ctx.getResources().getDisplayMetrics().densityDpi;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.DONUT) {
+            mCurrentDpi = ctx.getResources().getDisplayMetrics().densityDpi;
+        }
         Log.d(TAG, "Starting PdfiumAndroid " + BuildConfig.VERSION_NAME);
     }
 
